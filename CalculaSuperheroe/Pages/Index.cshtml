@@ -1,0 +1,78 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<div class="row">
+	<div class="col">
+		@if (Model.HasErrorN)
+		{
+			<div class="alert alert-warning" role="alert">
+				Nombre no capturado
+			</div>
+		}
+		@if (Model.HasErrorM)
+		{
+			<div class="alert alert-warning" role="alert">
+				Mes no capturado o incorrecto
+			</div>
+		}
+
+		<div class="row g-3">
+			<h1>DESCUBRE TU NOMBRE DE SUPERHÉROE</h1>
+			<form method="post">
+				<div class="col">
+					<input asp-for="nombre" type="text" class="form-control" placeholder="Escribe tu nombre" aria-label="Escribe tu nombre">
+				</div>
+				<br />
+				<div class="col">
+					<select asp-for="mes" type="text" id="mes" class="form-select">
+						<option selected>Selecciona tu mes...</option>
+						<option>Enero</option>
+						<option>Febrero</option>
+						<option>Marzo</option>
+						<option>Abril</option>
+						<option>Mayo</option>
+						<option>Junio</option>
+						<option>Julio</option>
+						<option>Agosto</option>
+						<option>Septiembre</option>
+						<option>Octubre</option>
+						<option>Noviembre</option>
+						<option>Diciembre</option>
+					</select>
+				</div>
+				<br />
+				<input type="submit" value="Calcular" />
+			</form>
+		</div>
+
+
+	</div>
+	@if (!string.IsNullOrEmpty(Model.Superheroe))
+	{
+		<div class="col">
+
+			<div class="card" style="width: 30rem;">
+				<img src="~/img/super.jpg" class="card-img-top" alt="avengers">
+				<div class="card-body" style="background-color: #EE8E81;">
+					<h5 class="card-title"></h5>
+					<p class="card-text">Tu nombre de superhéroe es:</p>
+					<p class="card-text">@Model.Superheroe</p>
+				</div>
+			</div>
+		</div>
+	}
+
+	<figure class="text-center">
+		<blockquote class="blockquote">
+			<h6>No tiene nada de malo sentir miedo, siempre y cuando no te dejes vencer</h6>
+		</blockquote>
+		<figcaption class="blockquote-footer">
+			 <cite title="Source Title">Capitán América</cite>
+		</figcaption>
+
+	</figure>
+</div>
